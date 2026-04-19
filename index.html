@@ -11,6 +11,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
         * {
@@ -24,6 +26,7 @@
         html, body {
             width: 100%;
             height: 100%;
+            scroll-behavior: smooth;
         }
 
         body {
@@ -47,101 +50,106 @@
         /* Container */
         .container {
             width: 100%;
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: 1rem;
-            padding-right: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
         }
 
-        @media (min-width: 640px) {
-            .container {
-                padding-left: 1.5rem;
-                padding-right: 1.5rem;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .container {
-                padding-left: 2rem;
-                padding-right: 2rem;
-                max-width: 1280px;
-            }
-        }
-
-        /* Animações */
-        @keyframes float-wa {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
-        }
-
-        @keyframes pulse-soft {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
-        }
-
-        /* Header */
+        /* Header CSS */
         header {
             width: 100%;
             background-color: #FFFFFF;
-            border-bottom: 1px solid #f3f4f6;
-            padding: 1rem 0;
+            border-bottom: 1px solid #f0f0f0;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         .header-content {
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 10px;
         }
 
         .logo-section {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 12px;
+            flex-shrink: 1;
         }
 
         .logo-section img {
-            height: 3rem;
+            height: 45px;
             width: auto;
         }
 
-        .logo-text {
-            display: none;
-        }
-
-        @media (min-width: 640px) {
-            .logo-text {
-                display: block;
-            }
-
-            .logo-text h1 {
-                font-size: 1.125rem;
-                font-weight: 700;
-                color: #2D2D2D;
-                font-family: 'Poppins', sans-serif;
-            }
-        }
-
-        .cta-button {
-            background-color: #25d366;
-            color: #FFFFFF;
-            font-size: 0.75rem;
-            padding: 8px 16px;
-            border-radius: 0.375rem;
+        .company-name {
+            font-size: 1rem;
+            color: #2D2D2D;
+            white-space: nowrap;
             font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-block;
-            text-align: center;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            line-height: 1.2;
-            white-space: pre-line;
+            font-weight: 700;
         }
 
-        .cta-button:hover {
-            background-color: #1fa857;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+        .header-socials {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .social-icon-box {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: transform 0.2s ease, filter 0.2s ease;
+        }
+
+        .phone-bg { background-color: #4285F4; }
+        .instagram-bg { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+        .whatsapp-bg { background-color: #25D366; }
+
+        .social-icon-box:active { transform: scale(0.9); }
+
+        @media (min-width: 1024px) {
+            .social-icon-box:hover {
+                transform: translateY(-3px);
+                filter: brightness(1.1);
+            }
+        }
+
+        /* MOBILE HEADER */
+        @media (max-width: 600px) {
+            header { padding: 8px 0; }
+            .logo-section { gap: 8px; }
+            .logo-section img { height: 32px; }
+            .company-name {
+                font-size: 0.75rem;
+                white-space: normal;
+                max-width: 110px;
+                line-height: 1.1;
+            }
+            .social-icon-box { width: 32px; height: 32px; font-size: 1rem; border-radius: 6px; }
+            .header-socials { gap: 5px; }
+        }
+
+        /* Animações */
+        @keyframes float-wa {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.9; transform: scale(1.05); }
         }
 
         /* Hero Section */
@@ -176,9 +184,7 @@
         }
 
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
+            .hero h1 { font-size: 2.5rem; }
         }
 
         .authority-text {
@@ -189,10 +195,7 @@
             margin-bottom: 2rem;
         }
 
-        .authority-text strong {
-            font-weight: 600;
-            color: #2D2D2D;
-        }
+        .authority-text strong { font-weight: 600; color: #2D2D2D; }
 
         .description-text {
             font-size: 1.125rem;
@@ -224,25 +227,11 @@
             gap: 0.75rem;
         }
 
-        .service-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
+        .service-item { display: flex; align-items: center; gap: 0.75rem; }
+        .service-item span { color: #E8B4D0; font-size: 1.125rem; }
+        .service-item p { color: #4B5563; font-family: 'Poppins', sans-serif; }
 
-        .service-item span {
-            color: #E8B4D0;
-            font-size: 1.125rem;
-        }
-
-        .service-item p {
-            color: #4B5563;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .hero-cta {
-            text-align: center;
-        }
+        .hero-cta { text-align: center; }
 
         .btn-primary {
             background-color: #25d366;
@@ -281,9 +270,7 @@
         }
 
         @media (max-width: 768px) {
-            .gallery h2 {
-                font-size: 2.5rem;
-            }
+            .gallery h2 { font-size: 2.5rem; }
         }
 
         .gallery-grid {
@@ -297,7 +284,10 @@
             overflow: hidden;
             background-color: #f3f4f6;
             aspect-ratio: 1;
+            transition: transform 0.3s ease;
         }
+
+        .gallery-item:hover { transform: scale(1.02); }
 
         .gallery-item img {
             width: 100%;
@@ -305,7 +295,7 @@
             object-fit: cover;
         }
 
-        /* Services Section */
+        /* Services Section (Galeria de Fotos) */
         .services {
             width: 100%;
             background-color: #F8E8F0;
@@ -317,12 +307,6 @@
             text-align: center;
             margin-bottom: 4rem;
             color: #2D2D2D;
-        }
-
-        @media (max-width: 768px) {
-            .services h2 {
-                font-size: 2.5rem;
-            }
         }
 
         .services-grid-3x3 {
@@ -341,6 +325,7 @@
 
         .service-card:hover {
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+            transform: translateY(-5px);
         }
 
         .service-card img {
@@ -363,12 +348,6 @@
             color: #2D2D2D;
         }
 
-        @media (max-width: 768px) {
-            .benefits h2 {
-                font-size: 2.5rem;
-            }
-        }
-
         .benefits-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -380,37 +359,22 @@
             border-radius: 1rem;
             padding: 2rem;
             text-align: center;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
         }
 
         .benefit-card:hover {
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
         }
 
-        .benefit-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
+        .benefit-icon { font-size: 2.5rem; margin-bottom: 1.5rem; display: block; }
+        .benefit-card h3 { font-family: 'Poppins', sans-serif; font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: #2D2D2D; }
+        .benefit-card p { font-size: 0.875rem; color: #4B5563; line-height: 1.6; }
 
-        .benefit-card h3 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: #2D2D2D;
-            margin-bottom: 0.75rem;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .benefit-card p {
-            font-size: 0.875rem;
-            color: #4B5563;
-            line-height: 1.6;
-        }
-
-        /* Testimonials Section (Updated) */
+        /* Testimonials */
         .testimonials {
             width: 100%;
-            background-color: #F8E8F0;
+            background-color: #FFFFFF;
             padding: 5rem 1rem;
         }
 
@@ -423,96 +387,46 @@
 
         .testimonials-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
 
         .testimonial-card {
-            background-color: #FFFFFF;
-            border-radius: 1.25rem;
-            padding: 1.5rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            border: 1px solid #f3f4f6;
+            background-color: #F9FAFB;
+            border-radius: 1rem;
+            padding: 2rem;
+            border: 1px solid #F3F4F6;
             transition: all 0.3s ease;
         }
 
         .testimonial-card:hover {
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            transform: translateY(-2px);
+            background-color: #FFFFFF;
+            box-shadow: 0 10px 30px rgba(232, 180, 208, 0.2);
+            transform: translateY(-5px);
+            border-color: #E8B4D0;
         }
 
         .testimonial-header {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 1rem;
+            margin-bottom: 1rem;
         }
 
-        .testimonial-header img {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            object-fit: cover;
-            background-color: #f3f4f6;
-        }
-
-        .testimonial-info {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .testimonial-name {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 0.95rem;
-            color: #2D2D2D;
-        }
-
-        .testimonial-stars {
-            color: #fbbf24;
-            font-size: 0.85rem;
-        }
-
-        .testimonial-text {
-            font-size: 0.9rem;
-            color: #4B5563;
-            line-height: 1.6;
-            margin: 0;
-        }
+        .testimonial-name { font-weight: 700; color: #2D2D2D; font-family: 'Poppins', sans-serif; }
+        .testimonial-stars { color: #FBBF24; }
+        .testimonial-text { font-size: 0.875rem; color: #4B5563; line-height: 1.6; font-style: italic; }
 
         /* CTA Final */
         .cta-final {
             width: 100%;
             background-color: #F8E8F0;
             padding: 5rem 1rem;
-        }
-
-        .cta-final-content {
-            max-width: 48rem;
-            margin: 0 auto;
             text-align: center;
         }
 
-        .cta-final h2 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            color: #2D2D2D;
-        }
-
-        @media (max-width: 768px) {
-            .cta-final h2 {
-                font-size: 2.5rem;
-            }
-        }
-
-        .cta-final p {
-            font-size: 1.125rem;
-            color: #4B5563;
-            line-height: 1.8;
-            margin-bottom: 3rem;
-        }
+        .cta-final h2 { font-size: 3.5rem; margin-bottom: 1.5rem; color: #2D2D2D; }
+        .cta-final p { font-size: 1.125rem; color: #4B5563; line-height: 1.8; margin-bottom: 3rem; }
 
         .btn-primary-lg {
             background-color: #25d366;
@@ -552,54 +466,14 @@
             margin-bottom: 3rem;
         }
 
-        .footer-map {
-            border-radius: 0.5rem;
-            overflow: hidden;
-            height: 20rem;
-        }
-
-        .footer-map iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .footer-info h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            font-family: 'Poppins', sans-serif;
-            color: #2D2D2D;
-        }
-
-        .footer-info-item {
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-info-label {
-            font-size: 0.875rem;
-            color: #4B5563;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .footer-info-content {
-            font-size: 1rem;
-            color: #4B5563;
-            line-height: 1.6;
-        }
-
-        .footer-info-content a {
-            color: #4B5563;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .footer-info-content a:hover {
-            color: #E8B4D0;
-        }
+        .footer-map { border-radius: 0.5rem; overflow: hidden; height: 20rem; }
+        .footer-map iframe { width: 100%; height: 100%; border: none; }
+        .footer-info h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 2rem; font-family: 'Poppins', sans-serif; color: #2D2D2D; }
+        .footer-info-item { margin-bottom: 1.5rem; }
+        .footer-info-label { font-size: 0.875rem; color: #4B5563; font-weight: 600; margin-bottom: 0.5rem; font-family: 'Poppins', sans-serif; }
+        .footer-info-content { font-size: 1rem; color: #4B5563; line-height: 1.6; }
+        .footer-info-content a { color: #4B5563; text-decoration: none; font-weight: 600; transition: color 0.3s ease; }
+        .footer-info-content a:hover { color: #E8B4D0; }
 
         .directions-btn {
             display: inline-block;
@@ -614,50 +488,33 @@
             margin-top: 1rem;
         }
 
-        .directions-btn:hover {
-            background-color: #2563eb;
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-        }
-
-        .footer-divider {
-            border-top: 1px solid #e5e7eb;
-            padding-top: 2rem;
-            text-align: center;
-        }
-
-        .footer-copyright {
-            font-size: 0.875rem;
-            color: #4B5563;
-        }
+        .directions-btn:hover { background-color: #2563eb; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); }
+        .footer-divider { border-top: 1px solid #e5e7eb; padding-top: 2rem; text-align: center; }
+        .footer-copyright { font-size: 0.875rem; color: #4B5563; }
 
         /* WhatsApp Float Button */
         .wa-float {
             position: fixed;
-            bottom: 28px;
-            right: 28px;
-            width: 62px;
-            height: 62px;
-            border-radius: 50%;
-            background: #25d366;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 1000;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-            z-index: 99999;
-            animation: float-wa 3s ease-in-out infinite;
-            transition: all 0.3s ease;
             text-decoration: none;
+            animation: float-wa 3s ease-in-out infinite;
+            transition: transform 0.3s ease;
         }
 
-        .wa-float:hover {
-            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
-            transform: scale(1.1);
-        }
-
-        .wa-float svg {
-            width: 32px;
-            height: 32px;
-        }
+        .wa-float:hover { transform: scale(1.1); color: #FFF; }
 
         /* Demo Banner */
         .demo-banner {
@@ -683,20 +540,15 @@
             text-orientation: mixed;
         }
 
-        /* Responsive Modifications */
         @media (max-width: 768px) {
             .hero { padding: 3rem 1rem; }
             .hero h1 { font-size: 2.5rem; }
             .gallery, .services, .benefits, .testimonials, .cta-final { padding: 3rem 1rem; }
             .gallery h2, .services h2, .benefits h2, .testimonials h2, .cta-final h2 { font-size: 2.5rem; }
-            
             .gallery-grid { grid-template-columns: 1fr; }
             .services-grid-3x3 { grid-template-columns: repeat(2, 1fr); }
             .benefits-grid { grid-template-columns: 1fr; }
-            
-            /* Testimonials: 1 Column on Mobile */
             .testimonials-grid { grid-template-columns: 1fr; }
-            
             .footer-grid { grid-template-columns: 1fr; }
             footer { padding: 3rem 1rem; }
         }
@@ -707,32 +559,24 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo-section">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgW4KMJJ3sMbZvbdFtzDieNzOrskAOHtHdwcOhC8JvqoWzBQ_x2MfEdjkJJSpQR1xaVMNYDYuNDYOwNqrghK9C7L2CvbBVRhJZ4tkkavnHFrp3jj-SquhmXYxYhXaQ8oZvMNYOnuC2G57aiVnlGQOioY1BVKERg1Aha27y2grNHGFTUORGU9GzXJTtIFU2S/s1200/logo%20(2).png" alt="Studio Samara Campos">
-                    <div class="logo-text">
-                        <h1>Studio Samara Campos / Alex Santos</h1>
-                    </div>
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgW4KMJJ3sMbZvbdFtzDieNzOrskAOHtHdwcOhC8JvqoWzBQ_x2MfEdjkJJSpQR1xaVMNYDYuNDYOwNqrghK9C7L2CvbBVRhJZ4tkkavnHFrp3jj-SquhmXYxYhXaQ8oZvMNYOnuC2G57aiVnlGQOioY1BVKERg1Aha27y2grNHGFTUORGU9GzXJTtIFU2S/s1200/logo%20(2).png" alt="Logo Studio Samara Campos">
+                    <span class="company-name">Studio Samara Campos / Alex Santos</span>
                 </div>
-                <a href="https://wa.me/551194918-4616?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer" class="cta-button">Atendimento WhatsApp</a>
+                <div class="header-socials">
+                    <a href="tel:11949184616" class="social-icon-box phone-bg"><i class="fa-solid fa-phone"></i></a>
+                    <a href="https://instagram.com/studiosamaracampos" target="_blank" class="social-icon-box instagram-bg"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://wa.me/5511949184616" target="_blank" class="social-icon-box whatsapp-bg"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
             </div>
         </div>
     </header>
 
     <section class="hero">
         <div class="hero-content">
-            <div class="rating">
-                <p>⭐ 5,0 ⭐⭐⭐⭐⭐ (137 avaliações)</p>
-            </div>
-
+            <div class="rating"><p>⭐ 5,0 ⭐⭐⭐⭐⭐ (137 avaliações)</p></div>
             <h1>A Excelência que a sua Face Merece</h1>
-
-            <p class="authority-text">
-                <strong>Resultados Referência:</strong> Especialistas em realce natural, remoção a laser de alta precisão e protocolos avançados de pele. Transformação com segurança e arte.
-            </p>
-
-            <p class="description-text">
-                Micropigmentação e Laser: Sobrancelhas, lábios e pele impecáveis com a expertise de quem domina a técnica e a tecnologia.
-            </p>
-
+            <p class="authority-text"><strong>Resultados Referência:</strong> Especialistas em realce natural, remoção a laser de alta precisão e protocolos avançados de pele. Transformação com segurança e arte.</p>
+            <p class="description-text">Micropigmentação e Laser: Sobrancelhas, lábios e pele impecáveis com a expertise de quem domina a técnica e a tecnologia.</p>
             <div class="services-box">
                 <h3>Nossos Serviços</h3>
                 <div class="services-grid">
@@ -745,9 +589,8 @@
                     <div class="service-item"><span>✓</span><p>Designer de Sobrancelhas</p></div>
                 </div>
             </div>
-
             <div class="hero-cta">
-                <a href="https://wa.me/551194918-4616?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20meu%20hor%C3%A1rio." target="_blank" rel="noopener noreferrer" class="btn-primary">Agende seu Horário</a>
+                <a href="https://wa.me/5511949184616?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20meu%20hor%C3%A1rio." target="_blank" rel="noopener noreferrer" class="btn-primary">Agende seu Horário</a>
             </div>
         </div>
     </section>
@@ -756,15 +599,9 @@
         <div class="container">
             <h2>Nosso Espaço</h2>
             <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEggmTVcM3oque3pBhF1GDqrFp_oMLvIPE_dvgzHNRrHZdgvhxhw4JjHxCaJHvLs60IqCo0x5hNc1mazZOf96xKaHYzI4JqMGKcrR2RLXjZHocwRuqeI8EZPPAoqnZrrUukRpKRruE4SWL6oSXiYXoP4JVPP_nR4VM_duMfZBWCj1DiM3Q5lqcc5VeeQN5kM/s327/1.png" alt="Espaço 1">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg88eXn6PUSpLpV3cvKcgmiU7dFidtqZ87bq_H0iWMfFXLupGq4zBSU6EKaOsEOygCpVtCzPFAZYmErHarhlx35OMCwwBxAVYGPBl94ndqOGzhUKg4EL1EBjEGqeNEVoikLZDdsXWJHafBSBTl5UFK_-zhGT2KBb4bDubhKzXTtDqGg4z1AYns6FG631K0Z/s619/2.png" alt="Espaço 2">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiFAzG3UWRsIk9dPjjQLPM64ggqdBVieKHDSlhT4NHxG2OGrHE_LG17cI5r2aehd6LWF6c89b2JXP6W3Pstv4YTeKfPZkWedEQx4bA-usio5kv7RDkw_9rQ31jNxe3Mx28n5y5XRDC7uAxiAvU1E02tvWEv-9eXtCUVc8j9rnQyA0KLIo5ByNeBGSgRN7VS/s624/3.png" alt="Espaço 3">
-                </div>
+                <div class="gallery-item"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEggmTVcM3oque3pBhF1GDqrFp_oMLvIPE_dvgzHNRrHZdgvhxhw4JjHxCaJHvLs60IqCo0x5hNc1mazZOf96xKaHYzI4JqMGKcrR2RLXjZHocwRuqeI8EZPPAoqnZrrUukRpKRruE4SWL6oSXiYXoP4JVPP_nR4VM_duMfZBWCj1DiM3Q5lqcc5VeeQN5kM/s327/1.png" alt="Espaço 1"></div>
+                <div class="gallery-item"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg88eXn6PUSpLpV3cvKcgmiU7dFidtqZ87bq_H0iWMfFXLupGq4zBSU6EKaOsEOygCpVtCzPFAZYmErHarhlx35OMCwwBxAVYGPBl94ndqOGzhUKg4EL1EBjEGqeNEVoikLZDdsXWJHafBSBTl5UFK_-zhGT2KBb4bDubhKzXTtDqGg4z1AYns6FG631K0Z/s619/2.png" alt="Espaço 2"></div>
+                <div class="gallery-item"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiFAzG3UWRsIk9dPjjQLPM64ggqdBVieKHDSlhT4NHxG2OGrHE_LG17cI5r2aehd6LWF6c89b2JXP6W3Pstv4YTeKfPZkWedEQx4bA-usio5kv7RDkw_9rQ31jNxe3Mx28n5y5XRDC7uAxiAvU1E02tvWEv-9eXtCUVc8j9rnQyA0KLIo5ByNeBGSgRN7VS/s624/3.png" alt="Espaço 3"></div>
             </div>
         </div>
     </section>
@@ -773,15 +610,10 @@
         <div class="container">
             <h2>Galeria de Fotos</h2>
             <div class="services-grid-3x3">
-                <div class="service-card"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgeYpYM_P5BCDHnUYIYtBRYeBiTlBgFU0_Z1MPm2geSSYSkHoehC_M3y_QvO-_Yrc77tR6lU9Hcg6-op90nP3scdm7kzrSg9kyLiTc3RyGH4Vyb_qfcmvS56UPSww56pDFDL_11hA_V0kvSG5U0HrqhYMm63g7pi-_4KeqmGocvQF8wqsPwKps8bi7xp-mM/s432/1.png" alt="Serviço 1"></div>
-                <div class="service-card"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh97SMCeHOaiP32mp6UD8mrMZqrXcQbEASxx2ujXiZWO0OKEe2LeMqweRw4koy7j7Kv_8-PYemTkRCLdEZf3CyrKPhb-2vXI_zWrlReLgeA1_amgjAcvePvG6-LpGQ3V0XXryxnuKaukTtru7maYW88xiIFRjbl1VqpL2fsmm2z9MHwzIHrwVPqAej4cCIx/s392/2.png" alt="Serviço 2"></div>
-                <div class="service-card"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiaY7g3Ac1GeDK1LMwO-YPq1-FcxMqXEU6919UB1wcoW0ZcDLa4YLaqgmpVM3egU5j8Xw-2oLeSZdGz1lYKl0EYbTas3hhQMLOerezGDC1l0eRwHNo8VvkUntpDArPnt4AN9I1009wrJIiBMmTizRWHVWlnUN4Sp4HqVZGSQ-zxQg4igOEhx9rUVy6xQHbF/s400/3.png" alt="Serviço 3"></div>
-                <div class="service-card"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgCZEkdu-MGMKYfUP0A_Sb392A3IALCHb3bGIQ9FPppW_8uqROzZquioFDrtF96Rclx0uzErdECTzSQ4ujkai7k5b7d6oJOptbBEKCuSBA8f4PfgAzoJhwN_P3aKMzarXr9y0vDP36SZHH1WfUiLGwA5sD7SjEkdO8x4xY8dyAUx-yXRDqb7s-8hTyTmomE/s400/4.png" alt="Serviço 4"></div>
-                <div class="service-card"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgrAt_9Po5RMH2AbbfjvsDkR5qb8gAeN7T4UbjJAi8Eb3xLkyW7sgx3BfR2nqLV_mgtIKNqNzFJfviR1R8j5WyxG3SBTTpvKKxKFC3Tays1oNAgMlBpjNzC7dGrXtYGFjNQPK2jokHtfXPH1vmoFkJ81G3Jq8D3sszJj3h5gzrsV7dpeAbBYUyMA2J25Sk7/s400/5.png" alt="Serviço 5"></div>
-                <div class="service-card"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgqmtVsScMpbSNEe1jDscetwkFGhSQsWkxc0eziOnBRwinaRVyVMkohbWKq-kF2xuIAHEdbc0bC0GfL9DHtxNGosGCTeE-Miw6YRzHwrc-EiekYKST82ENbMV_huy_R5effXg_xWpkuSC2fU4slGQbqVOJye5yhbAZJq6pE-aYcUGE2MCzDnmUZAQRVXz8F/s268/6.png" alt="Serviço 6"></div>
-                <div class="service-card"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiVyrBicJe3gaHKJJR6Wa_RewClPf1DLVchTerDjbMHOzYlhYf_hDTgQh0bh3ck-nDBl2qHADbiSu0526DEy5E2kDSIIYQT0fXM7axoWEXWY6j6_cPwYzpIayONdSINWl899dH-l27uSoYPbdNOkvbowna5DeFocijSSBnz8KLu5VCCnq6iRZq6CKPJxJ6l/s399/7.png" alt="Serviço 7"></div>
-                <div class="service-card"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEidAF1KL0MOMfuVsk63nialDYfOG0ErwEe5fLOHKzOf55l0mbgS5MDUtfnWnRb11et8tl9BmDd8PV7rZUs0eJqaV8oyy4B4uGExUkX12BufXVPp13_Dn6fJxNS7UQVukP2Dvrsv5an9maWqWvcTvIN6swj8P6srau8O5ArBGC2WORjIDSTCM54IzICYFe5z/s421/8.png" alt="Serviço 8"></div>
-                <div class="service-card"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh1boMycf1BAqSUSiWK6YPR1ZthuvWWaB9MtdJeHEDBUcPZeXidUgAZzwDfVmRIFhjkDQG8TZTc8nguujf57ciBV7o6odLDHpFiFSsO2BR28Oby2184L315ZO5GnW-BUpXgubxhS_5EX9LRP_ZR5ZpVngC9fSHinI7ajbZVKMZ0C2XTmztkNhpK1BzoN3LS/s401/9.png" alt="Serviço 9"></div>
+                <div class="service-card"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgeYpYM_P5BCDHnUYIYtBRYeBiTlBgFU0_Z1MPm2geSSYSkHoehC_M3y_QvO-_Yrc77tR6lU9Hcg6-op90nP3scdm7kzrSg9kyLiTc3RyGH4Vyb_qfcmvS56UPSww56pDFDL_11hA_V0kvSG5U0HrqhYMm63g7pi-_4KeqmGocvQF8wqsPwKps8bi7xp-mM/s432/1.png" alt="Trabalho 1"></div>
+                <div class="service-card"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh97SMCeHOaiP32mp6UD8mrMZqrXcQbEASxx2ujXiZWO0OKEe2LeMqweRw4koy7j7Kv_8-PYemTkRCLdEZf3CyrKPhb-2vXI_zWrlReLgeA1_amgjAcvePvG6-LpGQ3V0XXryxnuKaukTtru7maYW88xiIFRjbl1VqpL2fsmm2z9MHwzIHrwVPqAej4cCIx/s392/2.png" alt="Trabalho 2"></div>
+                <div class="service-card"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiaY7g3Ac1GeDK1LMwO-YPq1-FcxMqXEU6919UB1wcoW0ZcDLa4YLaqgmpVM3egU5j8Xw-2oLeSZdGz1lYKl0EYbTas3hhQMLOerezGDC1l0eRwHNo8VvkUntpDArPnt4AN9I1009wrJIiBMmTizRWHVWlnUN4Sp4HqVZGSQ-zxQg4igOEhx9rUVy6xQHbF/s400/3.png" alt="Trabalho 3"></div>
+                <div class="service-card"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgC" alt="Trabalho 4"></div>
             </div>
         </div>
     </section>
@@ -790,26 +622,10 @@
         <div class="container">
             <h2>Por que nos escolher?</h2>
             <div class="benefits-grid">
-                <div class="benefit-card">
-                    <div class="benefit-icon">✨</div>
-                    <h3>Expertise Comprovada</h3>
-                    <p>Especialistas em micropigmentação e laser com anos de experiência e resultados referência.</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">🎯</div>
-                    <h3>Resultados Naturais</h3>
-                    <p>Realce natural que respeita suas características, realçando sua beleza única.</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">🛡️</div>
-                    <h3>Segurança em Primeiro Lugar</h3>
-                    <p>Protocolos avançados e equipamentos de alta precisão para sua tranquilidade.</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">💎</div>
-                    <h3>Atendimento Premium</h3>
-                    <p>Experiência acolhedora em ambiente sofisticado com atendimento personalizado.</p>
-                </div>
+                <div class="benefit-card"><span class="benefit-icon">✨</span><h3>Expertise Comprovada</h3><p>Especialistas em micropigmentação e laser com anos de experiência e resultados referência.</p></div>
+                <div class="benefit-card"><span class="benefit-icon">🎯</span><h3>Resultados Naturais</h3><p>Realce natural que respeita suas características, realçando sua beleza única.</p></div>
+                <div class="benefit-card"><span class="benefit-icon">🛡️</span><h3>Segurança em Primeiro Lugar</h3><p>Protocolos avançados e equipamentos de alta precisão para sua tranquilidade.</p></div>
+                <div class="benefit-card"><span class="benefit-icon">💎</span><h3>Atendimento Premium</h3><p>Experiência acolhedora em ambiente sofisticado com atendimento personalizado.</p></div>
             </div>
         </div>
     </section>
@@ -818,121 +634,44 @@
         <div class="container">
             <h2>Avaliações de Clientes</h2>
             <div class="testimonials-grid">
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <img src="https://lh3.googleusercontent.com/a-/ALV-UjX7IRWgNiOA_tr93hG8D7OHb43aztsdMIUo1a8NWMfcrDIQmFFNEA=w36-h36-p-rp-mo-br100" alt="Pega a DIYca">
-                        <div class="testimonial-info">
-                            <span class="testimonial-name">Pega a DIYca</span>
-                            <div class="testimonial-stars">★★★★★</div>
-                        </div>
-                    </div>
-                    <p class="testimonial-text">Serviços de excelente qualidade e confiável, estou fazendo minha remoção e amando. O atendimento é maravilhoso, espaço lindo demais e aconchegante. Há tempos procurava um lugar assim.</p>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <img src="https://lh3.googleusercontent.com/a-/ALV-UjWtD6gmKxLCkTuWeSmxoOYiqHdH3PQQt4BFYJcq7dac-CVadH6UIA=w36-h36-p-rp-mo-ba2-br100" alt="Selma Santos">
-                        <div class="testimonial-info">
-                            <span class="testimonial-name">Selma Santos</span>
-                            <div class="testimonial-stars">★★★★★</div>
-                        </div>
-                    </div>
-                    <p class="testimonial-text">A Samara é especialista em sobrancelhas, me acalmou e não doeu nada, sem contar que ficou lindo. O pessoal é muito educado e te tratam muito bem. A Camila é maravilhosa também unha impecável.</p>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <img src="https://lh3.googleusercontent.com/a-/ALV-UjWZ9G9fY0YT5C7ED8oeiuIYvNtPlLflsqeEsr1A69TnIypiEnC_=w36-h36-p-rp-mo-br100" alt="Gabriela Brito">
-                        <div class="testimonial-info">
-                            <span class="testimonial-name">Gabriela Brito</span>
-                            <div class="testimonial-stars">★★★★★</div>
-                        </div>
-                    </div>
-                    <p class="testimonial-text">Espaço LINDO! A melhor sobrancelha e limpeza de pele da vida! A Nay (designer) é a melhor SUPER RECOMENDO!</p>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <img src="https://lh3.googleusercontent.com/a-/ALV-UjXHhszJtEJKsE_c08IVKE3lJDuV0oQa1Gmuz2Erv6FiwdV9U6Sx1A=w36-h36-p-rp-mo-ba2-br100" alt="Jennifer">
-                        <div class="testimonial-info">
-                            <span class="testimonial-name">Jennifer</span>
-                            <div class="testimonial-stars">★★★★★</div>
-                        </div>
-                    </div>
-                    <p class="testimonial-text">Fui muito bem recebida, tudo muito limpo e aconchegante. Amei minhas sobrancelhas, obrigada por devolver a minha autoestima. Super indico o local e os profissionais.</p>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <img src="https://lh3.googleusercontent.com/a-/ALV-UjXoTpCsPkt4r6o6QtfrmzjAT8cQI6JFQj1RcX7ONAdAC-o4yRnU=w36-h36-p-rp-mo-ba2-br100" alt="Debora Garcia">
-                        <div class="testimonial-info">
-                            <span class="testimonial-name">Debora Garcia</span>
-                            <div class="testimonial-stars">★★★★★</div>
-                        </div>
-                    </div>
-                    <p class="testimonial-text">Faço o procedimento de remoção a laser e o resultado está impecável, a Samara tem sido minha luz. O local é muito bonito, aconchegante e limpo. Com certeza eu indico.</p>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <img src="https://lh3.googleusercontent.com/a-/ALV-UjWpGUFGRt5G6oxEnorPTHpdIVZRNBf5pPdcPI5CfKy9GbO3Gh4g=w36-h36-p-rp-mo-ba2-br100" alt="Jacqueline Vieira">
-                        <div class="testimonial-info">
-                            <span class="testimonial-name">Jacqueline Vieira</span>
-                            <div class="testimonial-stars">★★★★★</div>
-                        </div>
-                    </div>
-                    <p class="testimonial-text">Encontrei o studio pelas avaliações do Google e foi o melhor lugar que poderia encontrar. O lugar é a coisa mais linda e os profissionais sensacionais!</p>
-                </div>
-
+                <div class="testimonial-card"><div class="testimonial-header"><span class="testimonial-name">Pega a DIYca</span><span class="testimonial-stars">★★★★★</span></div><p class="testimonial-text">Serviços de excelente qualidade e confiável, estou fazendo minha remoção e amando. O atendimento é maravilhoso, espaço lindo demais e aconchegante. Há tempos procurava um lugar assim.</p></div>
+                <div class="testimonial-card"><div class="testimonial-header"><span class="testimonial-name">Selma Santos</span><span class="testimonial-stars">★★★★★</span></div><p class="testimonial-text">A Samara é especialista em sobrancelhas, me acalmou e não doeu nada, sem contar que ficou lindo. O pessoal é muito educado e te tratam muito bem. A Camila é maravilhosa também unha impecável.</p></div>
+                <div class="testimonial-card"><div class="testimonial-header"><span class="testimonial-name">Gabriela Brito</span><span class="testimonial-stars">★★★★★</span></div><p class="testimonial-text">Espaço LINDO! A melhor sobrancelha e limpeza de pele da vida! A Nay (designer) é a melhor SUPER RECOMENDO!</p></div>
+                <div class="testimonial-card"><div class="testimonial-header"><span class="testimonial-name">Jennifer</span><span class="testimonial-stars">★★★★★</span></div><p class="testimonial-text">Fui muito bem recebida, tudo muito limpo e aconchegante. Amei minhas sobrancelhas, obrigada por devolver a minha autoestima. Super indico o local e os profissionais.</p></div>
+                <div class="testimonial-card"><div class="testimonial-header"><span class="testimonial-name">Debora Garcia</span><span class="testimonial-stars">★★★★★</span></div><p class="testimonial-text">Faço o procedimento de remoção a laser e o resultado está impecável, a Samara tem sido minha luz. O local é muito bonito, aconchegante e limpo. Com certeza eu indico.</p></div>
+                <div class="testimonial-card"><div class="testimonial-header"><span class="testimonial-name">Jacqueline Vieira</span><span class="testimonial-stars">★★★★★</span></div><p class="testimonial-text">Encontrei o studio pelas avaliações do Google e foi o melhor lugar que poderia encontrar. O lugar é a coisa mais linda e os profissionais sensacionais!</p></div>
             </div>
         </div>
     </section>
 
     <section class="cta-final">
-        <div class="cta-final-content">
+        <div class="container">
             <h2>Pronta para Brilhar?</h2>
             <p>Agende seu horário agora e descubra por que somos referência em beleza. Aqui no Studio, você é a estrela ✨</p>
-            <a href="https://wa.me/551194918-4616?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20meu%20hor%C3%A1rio." target="_blank" rel="noopener noreferrer" class="btn-primary-lg">Agende Agora</a>
+            <a href="https://wa.me/5511949184616?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20meu%20hor%C3%A1rio." target="_blank" rel="noopener noreferrer" class="btn-primary-lg">Agende Agora</a>
         </div>
     </section>
 
     <footer>
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-map">
-                    <iframe title="Studio Samara Campos - Localização" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3660.2789254155!2d-46.4895!3d-23.4521!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cef5a5a5a5a5a5%3A0x0!2sAv.%20Imirim%2C%204435%20-%20Cachoeirinha%2C%20SP!5e0!3m2!1spt-BR!2sbr!4v1234567890" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-
+                <div class="footer-map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3659.546734714343!2d-46.662444!3d-23.476778!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cef70000000001%3A0x0!2zMjPCsDI4JzM2LjQiUyA0NsKwMzknNDQuOCJX!5e0!3m2!1spt-BR!2sbr!4v1710000000000!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy"></iframe></div>
                 <div class="footer-info">
                     <h3>Informações de Contato</h3>
-                    <div class="footer-info-item">
-                        <div class="footer-info-label">📍 Endereço</div>
-                        <div class="footer-info-content">Av. Imirim, 4435 - Piso Térreo - Cachoeirinha, São Paulo - SP, 02465-500</div>
-                    </div>
-                    <div class="footer-info-item">
-                        <div class="footer-info-label">📞 Telefone</div>
-                        <div class="footer-info-content"><a href="tel:11949184616">11 94918-4616</a></div>
-                    </div>
-                    <div class="footer-info-item">
-                        <div class="footer-info-label">🕐 Horário de Funcionamento</div>
-                        <div class="footer-info-content">Seg-Sex: 09:00 - 18:00 | Sábado: 09:00 - 14:00</div>
-                    </div>
-                    <a href="https://www.google.com/maps/dir/?api=1&destination=Av.+Imirim,+4435,+Cachoeirinha,+São+Paulo" target="_blank" rel="noopener noreferrer" class="directions-btn">🚗 Dirigir até lá</a>
+                    <div class="footer-info-item"><p class="footer-info-label">📍 Endereço</p><p class="footer-info-content">Av. Imirim, 4435 - Piso Térreo - Cachoeirinha, São Paulo - SP, 02465-500</p></div>
+                    <div class="footer-info-item"><p class="footer-info-label">📞 Telefone</p><p class="footer-info-content"><a href="tel:11949184616">11 94918-4616</a></p></div>
+                    <div class="footer-info-item"><p class="footer-info-label">🕒 Horário de Funcionamento</p><p class="footer-info-content">Seg-Sex: 09:00 - 18:00 | Sábado: 09:00 - 14:00</p></div>
+                    <a href="https://maps.app.goo.gl/xxx" target="_blank" class="directions-btn">🚗 Dirigir até lá</a>
                 </div>
             </div>
-            <div class="footer-divider">
-                <p class="footer-copyright">© 2026 Studio Samara Campos / Alex Santos. Todos os direitos reservados.</p>
-            </div>
+            <div class="footer-divider"><p class="footer-copyright">© 2026 Studio Samara Campos / Alex Santos. Todos os direitos reservados.</p></div>
         </div>
     </footer>
 
-    <a href="https://wa.me/551194918-4616?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer" class="wa-float" aria-label="WhatsApp">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <a href="https://wa.me/5511949184616" class="wa-float" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <div class="demo-banner">
-        <div class="demo-banner-inner">Versão Demonstração</div>
-    </div>
+    <div class="demo-banner"><div class="demo-banner-inner">VERSÃO DEMONSTRAÇÃO</div></div>
 </body>
 </html>
